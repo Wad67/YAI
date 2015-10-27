@@ -1,0 +1,334 @@
+	<!-- This tells the compooter that the document is html -->
+	<!DOCTYPE html>
+	<!-- This tells the compooter that the document is english -->
+<html lang="en">
+	<!-- Some fancy looking css stuff that I stole -->
+<style type="text/css">
+table, th, td, img{
+border: 1px solid black;
+background-image: -webkit-gradient(linear, center top, center bottom, from(#bfbfbf), to(#fcfcfc), color-stop(10%, #d9d9d9), color-stop(88%, #f2f2f2), color-stop(97%, #f7f7f7));
+background-image: -webkit-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+background-image: -moz-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+background-image: -o-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+background-image: -ms-linear-gradient(top, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+background-image: linear-gradient(to bottom, #bfbfbf, #d9d9d9 10%, #f2f2f2 88%, #f7f7f7 97%, #fcfcfc);
+-webkit-box-shadow: 0 1px 0 white, inset 0 1px 7px rgba(0,0,0,0.4);
+-moz-box-shadow: 0 1px 0 white, inset 0 1px 7px rgba(0,0,0,0.4);
+box-shadow: 0 1px 0 white, inset 0 1px 7px rgba(0,0,0,0.4);
+}
+	
+
+table, th, td {
+    border: 2px solid black;
+	border-radius: 2px;
+    border-collapse: collapse;
+	border-spacing: 5px;
+}
+th, td {
+    padding: 1px;
+}
+
+
+button {
+   border-top: 1px solid #96d1f8;
+   background: #404040;
+   background: -webkit-gradient(linear, left top, left bottom, from(#969696), to(#404040));
+   background: -webkit-linear-gradient(top, #969696, #404040);
+   background: -moz-linear-gradient(top, #969696, #404040);
+   background: -ms-linear-gradient(top, #969696, #404040);
+   background: -o-linear-gradient(top, #969696, #404040);
+   padding: 2px 4px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #000000;
+   background: #000000;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #000000;
+   background: #000000;
+   }
+   
+       .tabs {
+      position: relative;   
+      min-height: 1600px; /* This part sucks */
+      clear: both;
+      margin: 25px 0;
+    }
+    .tab {
+      float: left;
+    }
+    .tab label {
+      background: #eee; 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      margin-left: -1px; 
+      position: relative;
+      left: 1px; 
+    }
+    .tab [type=radio] {
+      display: none;   
+    }
+    .content {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      background: white;
+      right: 0;
+      bottom: 0;
+      padding: 20px;
+      border: 1px solid #ccc; 
+    }
+    [type=radio]:checked ~ label {
+      background: white;
+      border-bottom: 1px solid white;
+      z-index: 2;
+    }
+    [type=radio]:checked ~ label ~ .content {
+      z-index: 1;
+    }
+</style>
+
+<!-- THE BIT BELOW HERE IS THE HEAD OF THE CODE -->
+	  <head>
+		<meta charset="utf-8">
+		<title>Incremental TestBed</title>
+	  </head>
+	  <body>
+
+
+	<div id="page-wrap">
+
+		<img src = "Title.png"></img>
+    <div class="tabs">
+        
+       <div class="tab">
+           <input type="radio" id="tab-1" name="tab-group-1" checked>
+           <label for="tab-1">Incremental</label>
+           
+           <div class="content">
+           <table border="1" style="width:50%" >
+					<caption></caption>
+					
+				<tr>
+					<td><img src = "Cookie.jpg"></img>Cookies:</td>
+					<td id="cookies"></td> 
+					<td><button onclick="cookieClick(1)">Get Cookie!</button></td>
+					<td>Cost: Free!</td>
+					<td>Harvest some Cookies</td>
+					<td>Cookies per second:</td>
+					<td id="cookierate"></td>
+				</tr>
+				
+				<tr>
+					<td><img src = "Cursor.jpg"></img>Cursors:</td>
+					<td id="cursors"></td>
+					<td><button onclick="cursors = buysomething(cursors,cursorCost);">Buy</button></td>
+					<td>Cost: 10</td>
+					<td>Purchase a Cursor to click for you</td>
+					<td>Clicker Mult:</td>
+					<td id="cookieclickmult"</td>
+				</tr>
+				<tr>
+					<td><img src = "CursorClicker.jpg"></img>Cursor Buyers:</td>
+					<td id="cursorbuyer"></td>
+					<td><button onclick="cursorbuyer = buysomething(cursorbuyer,cursorbuyerCost)">Buy</button></td>
+					<td>Cost: 1000</td>
+					<td>Purchase a Cursor to buy Cursors</td>
+				</tr>
+				<tr>
+					<td><img src = "CursorClicker.jpg"></img>Cursor Buyer^1:</td>
+					<td id="cbb"></td>
+					<td><button onclick="cbb = buysomething(cbb,cbbc)">Buy</button></td>
+					<td>Cost: 10000</td>
+					<td>I don't know where this is going</td>
+				</tr>
+				<tr>
+					<td><img src = "CursorClicker.jpg"></img>Cursor Buyer^2:</td>
+					<td id="cbb2"></td>
+					<td><button onclick="cbb2 = buysomething(cbb2,cbbc2)">Buy</button></td>
+					<td>Cost: 100000</td>
+					<td>I'm getting sick of typing these</td>
+				</tr>
+</table>
+
+           </div> 
+       </div>
+        
+       <div class="tab">
+           <input type="radio" id="tab-2" name="tab-group-1">
+           <label for="tab-2">Upgrades</label>
+           
+           <div class="content">
+           <table border="1" style="width:50%" >
+					<caption></caption>
+					
+				
+				<tr>
+					<td><img src = "Cursor.jpg"></img>Cursor mult:</td>
+					<td id="cursors"></td>
+					<td><button onclick="upgrade(cookieclickmult,2,cookieclickmultcost);">Upgrade</button></td>
+					<td>Cost: 10</td>
+					<td>2X cursor bonus</td>
+				</tr>
+
+				</tr>
+</table>
+               
+           </div> 
+       </div>
+        
+        <div class="tab">
+           <input type="radio" id="tab-3" name="tab-group-1">
+           <label for="tab-3">About & Options</label>
+         
+           <div class="content">
+**todo
+               
+           </div> 
+       </div>
+        
+ 
+	
+	
+        <div class="tab">
+           <input type="radio" id="tab-4" name="tab-group-1">
+           <label for="tab-4">ideas</label>
+         
+           <div class="content">
+       this is yet another tab where I'm going to put some ideas
+	   <br>
+	   1. Refactor all the code.
+	   <br>
+	   2. Split code into multiple files
+	   <br>
+	   3. Stop coding at 4:48 am while pissed
+	   <br>
+	   4. Make the incremental bigger and more incremental
+	   <br>
+	   5. Needa make a saving system
+	   <br>
+	   6. Do the upgrades, walk the dinosaur
+	   <br>
+	   7. Fill in About, populate options menu
+	   <br>
+	   Also I was thinking of making a totally different game with patterns you must write cellular automation code for to earn points by having the pattern live for the most generations.
+               
+           </div> 
+       </div>
+        
+    </div>
+
+
+		Copywrite Agreement as follows:
+		<br>
+		Nah, just nah.
+		Do what you want. 
+		By Wad67
+		<script>
+var cookies = 0;
+var cursorbuyer = 0;
+var cbb = 0;
+var cbb2 = 0;
+var cursors = 0;
+var cursorCost = 10;
+var cursorbuyerCost = 1000;
+var cbbc = 10000;
+var cbbc2 = 10000;
+var cookieclickmult = 1;
+var cookieclickmultcost = 10;
+var cookierate = 0
+function upgrade(base,amount,cost){
+		cookies = cookies - cost;
+		base = base * amount;
+		return base;
+
+};
+function cookieClick(number){
+	number = number * cookieclickmult;
+    cookies = cookies + number;
+    
+};
+
+function buyCursorBuyer(number){
+	
+	if(cookies >= cursorbuyerCost){
+	cursorbuyer = cursorbuyer + number;
+	cookies = cookies - cursorbuyerCost;
+
+};
+};
+
+function buysomething(Thing,ThingCost){
+	if(cookies >= ThingCost){
+	Thing++;
+	cookies = cookies - ThingCost;
+	return Thing
+	} else {
+	
+
+	return Thing
+	}
+
+};
+
+
+function increment(number1,number2){
+	number1 = number1 + number2;
+	
+
+	return number1;
+
+
+};
+
+
+function buyCursor(){
+         //works out the cost of this cursor
+    if(cookies >= cursorCost){                                   //checks that the player can afford the cursor
+        cursors = cursors + 1;                                   //increases number of cursors
+    	cookies = cookies - cursorCost;                          //removes the cookies spent
+         //updates the number of cursors for the user
+          //updates the number of cookies for the user
+    };
+
+};
+
+window.setInterval(function(){
+	cookierate =
+	cursors = increment(cursors,cursorbuyer);
+	cursorbuyer = increment(cursorbuyer,cbb);
+	cbb = increment(cbb,cbb2);
+	cookieClick(cursors);
+	
+	document.getElementById('cookies').innerHTML = cookies;
+	document.getElementById('cursors').innerHTML = cursors;
+
+	document.getElementById('cursorbuyer').innerHTML = cursorbuyer;
+	document.getElementById('cbb').innerHTML = cbb;
+	document.getElementById('cbb2').innerHTML = cbb2;
+	document.getElementById('cookieclickmult').innerHTML = cookieclickmult;
+
+
+	
+	
+}, 100);
+		
+		
+		
+		
+		</script>
+	  </body>
+	</html>

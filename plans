@@ -1,0 +1,7 @@
+For each addition to cookie, increment the counter by 1'
+Once the additions are done, do the maths to calculate the amount of additions in that 100ms timeframe
+and then convert it to a amount/Per/Second number.
+Update the number on the face
+reset the counter
+
+nek time it comes round do it all again
